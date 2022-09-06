@@ -10,7 +10,7 @@
       #campoUsuario="ngModel"
       required
     />
-    <app-mensagem
+    <app-mensagem class="deep-mt-2"
       *ngIf="campoUsuario.invalid && campoUsuario.touched"
       [mensagem]="'Usuário obrigatório'"
     ></app-mensagem>
@@ -26,7 +26,7 @@
       #campoSenha="ngModel"
       required
     />
-    <app-mensagem
+    <app-mensagem class="deep-mt-2"
       *ngIf="campoSenha.invalid && campoUsuario.touched"
       [mensagem]="'Senha obrigatório'"
     ></app-mensagem>
