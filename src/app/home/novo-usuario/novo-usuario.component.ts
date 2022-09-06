@@ -1,7 +1,9 @@
+import { UsuarioExisteService } from './usuario-existe.service';
 import { NovoUsuarioService } from './novo-usuario.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NovoUsuario } from './novo-usuario';
+import { minusculoValidator } from './minusculo.validator';
 
 @Component({
   selector: 'app-novo-usuario',
@@ -13,20 +15,25 @@ export class NovoUsuarioComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private novoUsuarioService: NovoUsuarioService
+    private novoUsuarioService: NovoUsuarioService,
+    private usuarioExistenteService: UsuarioExisteService
   ) {}
 
   ngOnInit(): void {
     this.novoUsuarioForm = this.fb.group({
-      email: [''],
-      fullName: [''],
-      userName: [''],
+      email: ['', [Validators.required, Validators.email]],
+      fullName: ['', [Validators.required, Validators.minLength(4)]],
+      userName: [
+        '',
+        [Validators.required, minusculoValidator],
+        [this.usuarioExistenteService.usuarioExistente()],
+      ],
       password: [''],
     });
   }
 
   cadastrar() {
-    const novoUsuario = this.novoUsuarioForm.getRawValue() as NovoUsuario
+    const novoUsuario = this.novoUsuarioForm.getRawValue() as NovoUsuario;
     console.log(novoUsuario);
   }
 }
