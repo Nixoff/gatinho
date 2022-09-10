@@ -18,4 +18,8 @@ export class NovoUsuarioService {
   verificaUsuarioExistente(nomeUsuario: string) {
     return this.http.get(`${this.url}/exists/${nomeUsuario}`);
   }
+
+  verificaEmailUsuarioExistente(emailUsuario: string) {
+    return this.http.get(`${this.url}/exists/email/${emailUsuario}`);
+  }
 }
