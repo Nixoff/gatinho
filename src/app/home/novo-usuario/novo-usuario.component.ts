@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { UsuarioExisteService } from './usuario-existe.service';
 import { NovoUsuarioService } from './novo-usuario.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { NovoUsuario } from './novo-usuario';
 import { minusculoValidator } from './minusculo.validator';
 
@@ -12,10 +12,10 @@ import { minusculoValidator } from './minusculo.validator';
   styleUrls: ['./novo-usuario.component.css'],
 })
 export class NovoUsuarioComponent implements OnInit {
-  novoUsuarioForm!: FormGroup;
+  novoUsuarioForm!: UntypedFormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private novoUsuarioService: NovoUsuarioService,
     private usuarioExistenteService: UsuarioExisteService,
     private router: Router,

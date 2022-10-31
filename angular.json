@@ -119,5 +119,7 @@
       }
     }
   },
-  "defaultProject": "gatitobook"
+  "cli": {
+    "analytics": false
+  }
 }
