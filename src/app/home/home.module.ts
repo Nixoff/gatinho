@@ -8,7 +8,6 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NovoUsuarioComponent } from './novo-usuario/novo-usuario.component';
 
-
 @NgModule({
   declarations: [
     HomeComponent,

@@ -7,17 +7,17 @@ import { switchMap, map, first, delay } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class UsuarioExisteService {
-  constructor(private novoUsuarioService: NovoUsuarioService) {}
+  constructor(private novoUsuarioService: NovoUsuarioService) { }
 
   usuarioExistente() {
     return (control: AbstractControl) => {
       return control.valueChanges.pipe(
         delay(800),
         switchMap((nomeUsuario) =>
-        this.novoUsuarioService.verificaUsuarioExistente(nomeUsuario)
+          this.novoUsuarioService.verificaUsuarioExistente(nomeUsuario)
         ),
         map((usuarioExistente) =>
-        usuarioExistente ? { usuarioExistente: true } : null
+          usuarioExistente ? { usuarioExistente: true } : null
         ),
         first()
       );
@@ -29,14 +29,14 @@ export class UsuarioExisteService {
       return control.valueChanges.pipe(
         delay(800),
         switchMap((emailUsuario) =>
-        this.novoUsuarioService.verificaEmailUsuarioExistente(emailUsuario)
+          this.novoUsuarioService.verificaEmailUsuarioExistente(emailUsuario)
         ),
         map((emailUsuarioExistente) =>
-        emailUsuarioExistente ? { emailUsuarioExistente: true } : null
+          emailUsuarioExistente ? { emailUsuarioExistente: true } : null
         ),
         first()
       );
     };
   }
-  
+
 }

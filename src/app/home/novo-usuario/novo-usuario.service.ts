@@ -9,7 +9,7 @@ import { NovoUsuario } from './novo-usuario';
 export class NovoUsuarioService {
   url = `${environment.API_URL}/user`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   cadastraNovoUsuario(novoUsuario: NovoUsuario) {
     return this.http.post(`${this.url}/signup`, novoUsuario);
